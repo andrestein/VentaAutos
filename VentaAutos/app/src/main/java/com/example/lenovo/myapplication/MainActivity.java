@@ -26,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initComponents();
-            btnCalcular.setOnClickListener(new View.OnClickListener() {
+
+
+        rg.ch
+
+        btnCalcular.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(autoSeleccionado() != "") {
