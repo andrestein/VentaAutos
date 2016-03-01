@@ -3,6 +3,7 @@ package com.example.lenovo.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -25,9 +26,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initComponents();
-        autoSeleccionado();
-        mejoras();
-        
+            btnCalcular.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(autoSeleccionado() != "") {
+                        txtPrecio.setText(autoSeleccionado());
+                        mejoras();
+                    }else{
+                        Toast.makeText(getApplicationContext(),"No se ha seleccionado ninguna marca",Toast.LENGTH_SHORT);
+                    }
+                }
+            });
     }
 
     private void mejoras(){
@@ -38,22 +47,22 @@ public class MainActivity extends AppCompatActivity {
         }if(checkPolarizado.isChecked()){
             precio =+ 8000;
         }
-        txtPrecio.setText("$ "+precio);
+        txtPrecio.setText("$ " + precio);
     }
 
-    private void autoSeleccionado(){
+    private String autoSeleccionado(){
         if(rg.getCheckedRadioButtonId()==R.id.radioBtnBMW){
-            setPrecio(40000);
-            txtPrecio.setText("$ "+ getPrecio());
+            precio= 40000;
+            return "$"+precio;
         }else if(rg.getCheckedRadioButtonId() == R.id.radioBtnAudi){
-            setPrecio(50000);
-            txtPrecio.setText("$ "+ getPrecio());
-        }else if(rg.getCheckedRadioButtonId() == -1){
-            Toast.makeText(getApplicationContext(), "Necesita seleccionar una marca de auto",Toast.LENGTH_SHORT);
+            precio=50000;
+            return "$"+precio;
         }
-        else{
-            setPrecio(30000);
-            txtPrecio.setText("$ "+ getPrecio());
+        else if(rg.getCheckedRadioButtonId() == R.id.radioBtnToyota){
+            precio= 30000;
+            return "$"+precio;
+        }else{
+            return "";
         }
     }
 
