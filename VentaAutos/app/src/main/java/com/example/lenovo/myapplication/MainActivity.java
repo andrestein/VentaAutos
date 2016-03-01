@@ -26,28 +26,39 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initComponents();
         autoSeleccionado();
+        mejoras();
         
+    }
 
+    private void mejoras(){
+        if(checkSunroof.isChecked()){
+            precio =+ 10000;
+        }if(checkNitro.isChecked()){
+            precio =+ 15000;
+        }if(checkPolarizado.isChecked()){
+            precio =+ 8000;
+        }
+        txtPrecio.setText("$ "+precio);
     }
 
     private void autoSeleccionado(){
         if(rg.getCheckedRadioButtonId()==R.id.radioBtnBMW){
-            precio =40000;
-            txtPrecio.setText(""+precio);
+            setPrecio(40000);
+            txtPrecio.setText("$ "+ getPrecio());
         }else if(rg.getCheckedRadioButtonId() == R.id.radioBtnAudi){
-            precio =40000;
-            txtPrecio.setText(""+precio);
+            setPrecio(50000);
+            txtPrecio.setText("$ "+ getPrecio());
         }else if(rg.getCheckedRadioButtonId() == -1){
             Toast.makeText(getApplicationContext(), "Necesita seleccionar una marca de auto",Toast.LENGTH_SHORT);
         }
         else{
-            precio =40000;
-            txtPrecio.setText(""+precio);
+            setPrecio(30000);
+            txtPrecio.setText("$ "+ getPrecio());
         }
     }
 
     private void initComponents(){
-        precio =0;
+        precio=0;
         rg= (RadioGroup)findViewById(R.id.rg);
         radioBMW = (RadioButton)findViewById(R.id.radioBtnBMW);
         radioAudi= (RadioButton)findViewById(R.id.radioBtnAudi);
@@ -57,5 +68,13 @@ public class MainActivity extends AppCompatActivity {
         checkPolarizado=(CheckBox)findViewById(R.id.checkPolarizado);
         txtPrecio = (EditText)findViewById(R.id.txtPecio);
         btnCalcular = (Button)findViewById(R.id.btnCalcular);
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }
