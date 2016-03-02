@@ -12,4 +12,24 @@
     tools:context="com.example.lenovo.myapplication.Main2Activity"
     tools:showIn="@layout/activity_main2">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Factura"
+        android:id="@+id/btnFactura"
+        android:layout_marginBottom="113dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtFactura"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/btnFactura"
+        android:editable="false" />
 </RelativeLayout>
